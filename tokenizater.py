@@ -1,16 +1,17 @@
 import re
 
 token_patterns = [
-    (r'[0-9]+(\.[0-9]+)?', 'NUMBER'),         # 
-    (r'[a-zA-Z_][a-zA-Z0-9_]*', 'ID'),  # 
-    (r'\+', 'PLUS'),               # 
-    (r'\-', 'MINUS'),              # 
-    (r'\*', 'MULTIPLY'),           # 
-    (r'\/', 'DIVIDE'),             # 
-    (r'\%', 'REMAIN'),             # 
-    (r'\(', 'LPAREN'),             # 
-    (r'\)', 'RPAREN'),             # 
-    (r'\s+', 'WS')                 # 
+    (r'[0-9]+(\.[0-9]+)?', 'NUMBER'),
+    (r'[a-zA-Z_][a-zA-Z0-9_]*', 'ID'),
+    (r'\+', 'PLUS'),
+    (r'\-', 'MINUS'),
+    (r'\*', 'MULTIPLY'),
+    (r'/', 'DIVIDE'),  # Removed backslash to match '/'
+    (r'\%', 'REMAIN'),
+    (r'\(', 'LPAREN'),
+    (r'\)', 'RPAREN'),
+    (r'\=', 'ASSIGN'),  # Match '=' separately
+    (r'\s+', 'WS')
 ]
 
 
@@ -34,4 +35,3 @@ def tokenize(text):
             pos = match.end()
 
     return tokens
-
